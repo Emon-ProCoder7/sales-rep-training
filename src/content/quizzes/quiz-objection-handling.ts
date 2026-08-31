@@ -13,6 +13,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-1",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-pricing-scale.png",
       prompt: "What is the maximum discount a rep is ever allowed to offer off the pricing calculator?",
       options: [
         { id: "a", text: "10%" },
@@ -44,6 +45,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-3",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-checklist-verify.png",
       prompt: "According to the Golden Rule of Objections, what does an objection actually mean?",
       options: [
         { id: "a", text: "The client is rejecting the deal outright" },
@@ -58,6 +60,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-4",
       moduleId: "module-4",
       type: "multi",
+      topicImage: "/images/icon-security-lock.png",
       prompt: "Which of these are legitimate reasons Beige gives for being worth more than a cheaper competitor like Snapper? (Select all that apply.)",
       options: [
         { id: "a", text: "$1M liability insurance" },
@@ -72,6 +75,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-5",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-urgency-clock.png",
       prompt: "What is the \"soft hold\" technique used for?",
       options: [
         { id: "a", text: "Putting a client on hold during a call" },
@@ -86,6 +90,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-6",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-pricing-scale.png",
       prompt: "When should you try to deliver the exact price to a client, if possible?",
       options: [
         { id: "a", text: "As early as possible, before they ask" },
@@ -117,6 +122,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-8",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-event-wedding.png",
       prompt: "In the Wedding Budget Pushback scenario, what's the correct discount sequence when a client says the quote is out of budget?",
       options: [
         { id: "a", text: "Offer the full 20% immediately to close fast" },
@@ -131,6 +137,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-9",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-pricing-scale.png",
       prompt: "A client says they're comparing you to another company. What should you say first?",
       options: [
         { id: "a", text: "\"Who are you comparing us to? Their prices are probably better.\"" },
@@ -145,6 +152,7 @@ export const quizObjectionHandling: Quiz = {
       id: "oh-10",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-payment.png",
       prompt: "When is a paid-in-full discount the right tool to offer?",
       options: [
         { id: "a", text: "Never — Beige doesn't offer this" },

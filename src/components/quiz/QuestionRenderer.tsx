@@ -6,6 +6,25 @@ import type { Question } from "@/content/types";
 import type { AnswerValue } from "@/lib/scoring";
 import { shuffle } from "@/lib/shuffle";
 
+function TopicThumb({ src }: { src?: string }) {
+  if (!src) return null;
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.94 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3 }}
+      className="mb-4 flex justify-center"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt=""
+        className="h-24 w-24 rounded-2xl border border-warm-beige/20 bg-near-black object-cover shadow-[0_0_30px_-10px_rgba(232,209,171,0.25)] sm:h-28 sm:w-28"
+      />
+    </motion.div>
+  );
+}
+
 export default function QuestionRenderer({
   question,
   value,
@@ -31,6 +50,7 @@ export default function QuestionRenderer({
 
     return (
       <div className="space-y-2.5">
+        {!hasScene && <TopicThumb src={question.topicImage} />}
         {hasScene ? (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -87,6 +107,7 @@ export default function QuestionRenderer({
     const selected = Array.isArray(value) ? value : [];
     return (
       <div className="space-y-2.5">
+        <TopicThumb src={question.topicImage} />
         <p className="text-xs text-mid-gray">Select all that apply.</p>
         {question.options.map((opt) => {
           const checked = selected.includes(opt.id);
@@ -121,6 +142,7 @@ export default function QuestionRenderer({
     const answer = (typeof value === "object" && !Array.isArray(value) ? value : {}) as Record<string, string>;
     return (
       <div className="space-y-3">
+        <TopicThumb src={question.topicImage} />
         {question.pairs.map((p) => (
           <div key={p.left} className="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-4 sm:flex-row sm:items-center sm:justify-between">
             <span className="text-sm font-medium text-pure-white">{p.left}</span>
@@ -157,6 +179,7 @@ export default function QuestionRenderer({
 
   return (
     <div className="space-y-2">
+      <TopicThumb src={question.topicImage} />
       <p className="text-xs text-mid-gray">Use the arrows to put these in the correct order.</p>
       {order.map((step, i) => (
         <div

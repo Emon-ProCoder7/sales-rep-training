@@ -13,6 +13,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-1",
       moduleId: "module-2",
       type: "ordering",
+      topicImage: "/images/icon-checklist-verify.png",
       prompt: "Put the Lead Hit Funnel steps in the correct order, from a new lead arriving to a call being scheduled.",
       steps: [
         "Lead arrives via Thumbtack",
@@ -26,6 +27,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-2",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-lead-inquiry.png",
       prompt: "A new Thumbtack lead just came in. What should you do before anything else?",
       options: [
         { id: "a", text: "Finish your current follow-up call first, then respond" },
@@ -40,6 +42,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-3",
       moduleId: "module-2",
       type: "matching",
+      topicImage: "/images/icon-team-comms.png",
       prompt: "Match each communication platform to its correct use at Beige.",
       pairs: [
         { left: "Slack", right: "Inbound Sales team communication only" },
@@ -53,6 +56,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-4",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-pipeline-flow.png",
       prompt: "A lead needs to move from the General Events Pipeline into a rep's own pipeline in GHL. What's the correct process?",
       options: [
         { id: "a", text: "Open the lead, switch the Pipeline dropdown to the rep's pipeline, assign them as Owner (or Follower), set the first stage, and click Update" },
@@ -84,6 +88,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-6",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-urgency-clock.png",
       prompt: "A rush booking comes in — the shoot is 5 days away. What payment is required?",
       options: [
         { id: "a", text: "50% deposit, balance 3 days before the shoot" },
@@ -98,6 +103,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-7",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-payment.png",
       prompt: "A client just signed their beige.app quote. How do you get them their payment instructions?",
       options: [
         { id: "a", text: "Send the Zelle email or tag (accounting@beigecorporation.io / @beigecorp) directly over OpenPhone" },
@@ -112,6 +118,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-8",
       moduleId: "module-2",
       type: "multi",
+      topicImage: "/images/icon-checklist-verify.png",
       prompt: "Which of these are real Revenue Sheet fields you fill in during Shoot Activation & Handoff? (Select all that apply.)",
       options: [
         { id: "a", text: "Invoice Number" },
@@ -126,6 +133,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-9",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-followup-message.png",
       prompt: "How soon after initial contact should a standard follow-up go out if you haven't heard back?",
       options: [
         { id: "a", text: "Same day, within the hour" },
@@ -140,6 +148,7 @@ export const quizToolsWorkflow: Quiz = {
       id: "tw-10",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-lead-inquiry.png",
       prompt: "In OpenPhone, a client's name is highlighted yellow. What does that indicate?",
       options: [
         { id: "a", text: "The client cancelled their shoot" },

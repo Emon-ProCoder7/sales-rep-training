@@ -113,6 +113,8 @@ export interface BaseQuestion {
   moduleId: ModuleId;
   prompt: string;
   explanation: string; // shown after answering, why correct answer is correct
+  /** compact topic thumbnail shown next to the prompt (single/multi/matching/ordering questions) */
+  topicImage?: string;
 }
 
 export interface SingleChoiceQuestion extends BaseQuestion {

@@ -13,6 +13,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-1",
       moduleId: "module-3",
       type: "ordering",
+      topicImage: "/images/icon-checklist-verify.png",
       prompt: "Put the Universal Call Script Framework in the correct order.",
       steps: ["Intro", "Value Propositions", "Discovery Questions", "Wrap-Up", "Closing"],
       explanation: "Every call — regardless of event type — follows this structure: greet and identify yourself, lead with value/credibility, ask discovery questions, wrap up with a proposal promise, then close with a follow-up time.",
@@ -38,6 +39,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-3",
       moduleId: "module-3",
       type: "matching",
+      topicImage: "/images/icon-video-camera.png",
       prompt: "Match each event type to its correct value-prop lead-in.",
       pairs: [
         { left: "Corporate Event", right: "Brand credibility — Amazon, Chase, Orange Theory, DHL, Rolls Royce" },
@@ -51,6 +53,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-4",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-wedding.png",
       prompt: "For a wedding video, what are the two standard length options you present to the client?",
       options: [
         { id: "a", text: "30–60 second reel or 1–2 minute promo" },
@@ -65,6 +68,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-5",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-music.png",
       prompt: "What is the starting price for a music video, per the training?",
       options: [
         { id: "a", text: "$1,000" },
@@ -79,6 +83,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-6",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-corporate.png",
       prompt: "For a corporate event photo package, roughly how many edited photos per hour of coverage should you tell the client to expect?",
       options: [
         { id: "a", text: "10 per hour" },
@@ -93,6 +98,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-7",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-memorial.png",
       prompt: "What tone should you strike throughout a memorial script?",
       options: [
         { id: "a", text: "Efficient and fast-moving, to respect their time" },
@@ -107,6 +113,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-8",
       moduleId: "module-3",
       type: "multi",
+      topicImage: "/images/icon-team-comms.png",
       prompt: "Which affirmation-style phrases should you sprinkle in while asking discovery questions? (Select all that apply.)",
       options: [
         { id: "a", text: "\"Great\"" },
@@ -121,6 +128,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-9",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-followup-message.png",
       prompt: "A former client that Kawser used to personally handle texts your line for the first time. What's the correct rebuttal script?",
       options: [
         { id: "a", text: "Ignore it — that client isn't yours" },
@@ -135,6 +143,7 @@ export const quizScriptsEventTypes: Quiz = {
       id: "se-10",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-pricing-scale.png",
       prompt: "A client asks about surcharges for booking on a holiday. What's the correct response?",
       options: [
         { id: "a", text: "There's a 15% holiday surcharge" },

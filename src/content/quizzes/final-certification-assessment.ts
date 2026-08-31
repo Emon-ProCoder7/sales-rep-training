@@ -16,6 +16,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-1",
       moduleId: "module-1",
       type: "multi",
+      topicImage: "/images/icon-pipeline-flow.png",
       prompt: "What are Beige's three core platform pillars? (Select all that apply.)",
       options: [
         { id: "a", text: "Beige Marketplace" },
@@ -30,6 +31,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-2",
       moduleId: "module-1",
       type: "single",
+      topicImage: "/images/icon-pricing-scale.png",
       prompt: "What is the Beige Marketplace's Q2 revenue goal?",
       options: [
         { id: "a", text: "$100,000 per month" },
@@ -44,6 +46,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-3",
       moduleId: "module-1",
       type: "single",
+      topicImage: "/images/icon-payment.png",
       prompt: "What daily target should you be aiming for in closed business as a new sales rep?",
       options: [
         { id: "a", text: "$1,000" },
@@ -58,6 +61,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-4",
       moduleId: "module-1",
       type: "multi",
+      topicImage: "/images/icon-event-corporate.png",
       prompt: "Which brands has Beige worked with? (Select all that apply.)",
       options: [
         { id: "a", text: "Amazon" },
@@ -72,6 +76,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-5",
       moduleId: "module-1",
       type: "single",
+      topicImage: "/images/icon-security-lock.png",
       prompt: "What keeps Beige's no-show rate below 0.5%?",
       options: [
         { id: "a", text: "Charging a large deposit" },
@@ -86,6 +91,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-6",
       moduleId: "module-1",
       type: "single",
+      topicImage: "/images/icon-team-rotation.png",
       prompt: "What is one way sales reps can build recurring income beyond closing shoots?",
       options: [
         { id: "a", text: "The affiliate dashboard, by referring client advocates" },
@@ -102,6 +108,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-7",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-lead-inquiry.png",
       prompt: "What's the very first thing you should do when a new Thumbtack lead arrives?",
       options: [
         { id: "a", text: "Respond to it immediately, before any other task" },
@@ -116,6 +123,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-8",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-pipeline-flow.png",
       prompt: "A rep says they can't see a lead in GHL that should be theirs. What's the most likely cause and the fix?",
       options: [
         { id: "a", text: "The Owner field is empty — go to the lead and set the rep as Owner" },
@@ -130,6 +138,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-9",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-team-comms.png",
       prompt: "Which platform is used for Inbound Sales team communication only?",
       options: [
         { id: "a", text: "Discord" },
@@ -144,6 +153,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-10",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-payment.png",
       prompt: "For a standard (non-corporate, non-rush) booking, what's the payment structure?",
       options: [
         { id: "a", text: "100% upfront" },
@@ -158,6 +168,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-11",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-lead-inquiry.png",
       prompt: "What color indicator in OpenPhone flags a pending client (50% paid or strong intent)?",
       options: [
         { id: "a", text: "Red" },
@@ -172,6 +183,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-12",
       moduleId: "module-2",
       type: "single",
+      topicImage: "/images/icon-payment.png",
       prompt: "A client just signed their beige.app quote and asked how to pay. What do you send?",
       options: [
         { id: "a", text: "The Zelle email or @beigecorp tag, directly over text" },
@@ -188,6 +200,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-13",
       moduleId: "module-3",
       type: "ordering",
+      topicImage: "/images/icon-checklist-verify.png",
       prompt: "Put the Universal Call Script Framework in order.",
       steps: ["Intro", "Value Propositions", "Discovery Questions", "Wrap-Up", "Closing"],
       explanation: "Every call follows: Intro, Value Propositions, Discovery Questions, Wrap-Up, Closing — regardless of event type.",
@@ -196,6 +209,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-14",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-wedding.png",
       prompt: "What are the two standard wedding video length options?",
       options: [
         { id: "a", text: "30–60 seconds or 1–2 minutes" },
@@ -210,6 +224,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-15",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-music.png",
       prompt: "What is the starting price for a music video?",
       options: [
         { id: "a", text: "$1,500" },
@@ -224,6 +239,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-16",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-hybrid-creator.png",
       prompt: "A client asks for just photography at their Quinceañera. What's the right move?",
       options: [
         { id: "a", text: "Accept immediately, no upsell" },
@@ -238,6 +254,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-17",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-memorial.png",
       prompt: "What tone governs the entire memorial script?",
       options: [
         { id: "a", text: "Fast and efficient" },
@@ -252,6 +269,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-18",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-pricing-scale.png",
       prompt: "What's the Holiday Clause?",
       options: [
         { id: "a", text: "A 20% holiday surcharge" },
@@ -266,6 +284,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-19",
       moduleId: "module-3",
       type: "single",
+      topicImage: "/images/icon-event-corporate.png",
       prompt: "Roughly how many edited photos per hour should a corporate client expect?",
       options: [
         { id: "a", text: "10" },
@@ -282,6 +301,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-20",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-pricing-scale.png",
       prompt: "What's the maximum discount a rep may ever offer off the pricing calculator?",
       options: [
         { id: "a", text: "10%" },
@@ -296,6 +316,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-21",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-checklist-verify.png",
       prompt: "A client says \"the price is too high.\" What's the correct first move?",
       options: [
         { id: "a", text: "Offer the maximum discount immediately" },
@@ -310,6 +331,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-22",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-checklist-verify.png",
       prompt: "What does the Golden Rule of Objections say an objection actually is?",
       options: [
         { id: "a", text: "A rejection of the deal" },
@@ -324,6 +346,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-23",
       moduleId: "module-4",
       type: "multi",
+      topicImage: "/images/icon-security-lock.png",
       prompt: "Which are legitimate Beige differentiators to cite against a cheaper competitor? (Select all that apply.)",
       options: [
         { id: "a", text: "$1M liability insurance" },
@@ -355,6 +378,7 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-25",
       moduleId: "module-4",
       type: "single",
+      topicImage: "/images/icon-urgency-clock.png",
       prompt: "What's a \"soft hold,\" and when should you use it?",
       options: [
         { id: "a", text: "Refusing to reserve a date without a deposit" },
