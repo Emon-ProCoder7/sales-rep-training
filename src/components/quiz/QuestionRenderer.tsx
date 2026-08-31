@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { motion } from "framer-motion";
 import type { Question } from "@/content/types";
 import type { AnswerValue } from "@/lib/scoring";
 import { shuffle } from "@/lib/shuffle";
@@ -26,12 +27,44 @@ export default function QuestionRenderer({
   );
 
   if (question.type === "single" || question.type === "scenario") {
+    const hasScene = question.type === "scenario" && question.characterImage && question.sceneImage;
+
     return (
       <div className="space-y-2.5">
-        {question.scenarioContext && (
-          <p className="mb-3 rounded-xl border border-border bg-surface p-4 text-sm italic text-slate-muted">
-            {question.scenarioContext}
-          </p>
+        {hasScene ? (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="mb-4 overflow-hidden rounded-3xl border border-border bg-near-black"
+          >
+            <div className="relative h-44 w-full overflow-hidden sm:h-56">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={question.sceneImage} alt="" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-near-black via-near-black/10 to-transparent" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={question.characterImage}
+                alt=""
+                className="absolute bottom-0 right-4 h-full max-h-44 w-auto object-contain sm:right-8 sm:max-h-56"
+              />
+            </div>
+            <div className="p-4 sm:p-5">
+              <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-warm-beige">
+                Client says
+              </p>
+              <p className="text-base leading-relaxed text-pure-white">{question.scenarioContext}</p>
+            </div>
+          </motion.div>
+        ) : (
+          question.scenarioContext && (
+            <p className="mb-3 rounded-xl border border-border bg-surface p-4 text-sm italic text-slate-muted">
+              {question.scenarioContext}
+            </p>
+          )
+        )}
+        {hasScene && (
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-mid-gray">Your reply</p>
         )}
         {question.options.map((opt) => (
           <button

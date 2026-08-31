@@ -7,6 +7,7 @@ export const quizScriptsEventTypes: Quiz = {
   moduleIds: ["module-3"],
   passThreshold: 0.8,
   resetModules: ["module-3"],
+  heroImage: "/images/quiz-scripts-event-types-hero.png",
   questions: [
     {
       id: "se-1",
@@ -21,6 +22,8 @@ export const quizScriptsEventTypes: Quiz = {
       moduleId: "module-3",
       type: "scenario",
       scenarioContext: "A client asks if you can just do photography for their Quinceañera — not video.",
+      characterImage: "/images/mathieu-asking.png",
+      sceneImage: "/images/scene-wedding-budget-EN.png",
       prompt: "What's the right response?",
       options: [
         { id: "a", text: "\"Sure, we only do photo for that then.\" and move on" },
@@ -147,6 +150,8 @@ export const quizScriptsEventTypes: Quiz = {
       moduleId: "module-3",
       type: "scenario",
       scenarioContext: "A budget-conscious client wants both photo and video coverage but is worried about the cost of booking two separate creators.",
+      characterImage: "/images/mathieu-worried.png",
+      sceneImage: "/images/scene-niehodbbx-EN.png",
       prompt: "What option should you offer alongside separate dedicated photo + video crews?",
       options: [
         { id: "a", text: "A single hybrid creator who covers both photo and video at a lower combined rate" },

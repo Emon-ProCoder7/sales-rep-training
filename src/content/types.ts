@@ -120,6 +120,9 @@ export interface SingleChoiceQuestion extends BaseQuestion {
   options: ChoiceOption[];
   correctOptionId: string;
   scenarioContext?: string; // extra framing paragraph for "scenario" type
+  /** scenario-type visual dressing: a "customer" avatar delivering scenarioContext as a speech line */
+  characterImage?: string;
+  sceneImage?: string;
 }
 
 export interface MultiChoiceQuestion extends BaseQuestion {
@@ -155,4 +158,8 @@ export interface Quiz {
   resetModules: ModuleId[] | "by-missed-question";
   unlocksQuizId?: string; // e.g. module quizzes unlock the final exam once ALL are passed
   isFinal?: boolean;
+  /** if set, the whole attempt is timed - auto-submits whatever is answered when it hits 0 */
+  timeLimitSeconds?: number;
+  /** shown on the quiz intro screen */
+  heroImage?: string;
 }

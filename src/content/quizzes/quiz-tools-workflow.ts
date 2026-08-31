@@ -7,6 +7,7 @@ export const quizToolsWorkflow: Quiz = {
   moduleIds: ["module-2"],
   passThreshold: 0.8,
   resetModules: ["module-2"],
+  heroImage: "/images/quiz-tools-workflow-hero.png",
   questions: [
     {
       id: "tw-1",
@@ -67,6 +68,8 @@ export const quizToolsWorkflow: Quiz = {
       moduleId: "module-2",
       type: "scenario",
       scenarioContext: "A non-corporate client's wedding is 3 weeks away and they just confirmed they want to book.",
+      characterImage: "/images/mathieu-neutral.png",
+      sceneImage: "/images/scene-niehodbbx-EN.png",
       prompt: "What payment structure applies to this booking?",
       options: [
         { id: "a", text: "100% upfront, since it's within a few weeks" },

@@ -8,6 +8,8 @@ export const finalCertificationAssessment: Quiz = {
   passThreshold: 0.8,
   resetModules: "by-missed-question",
   isFinal: true,
+  timeLimitSeconds: 2400,
+  heroImage: "/images/certification-badge.png",
   questions: [
     // ---- Module 1: Welcome, Platform, Role, Traction ----
     {
@@ -337,6 +339,8 @@ export const finalCertificationAssessment: Quiz = {
       moduleId: "module-4",
       type: "scenario",
       scenarioContext: "In the Wedding Budget Pushback scenario, the client says a competitor already quoted close to your discounted price.",
+      characterImage: "/images/mathieu-thinking.png",
+      sceneImage: "/images/scene-wedding-budget-EN.png",
       prompt: "What's the strongest response?",
       options: [
         { id: "a", text: "Match the unknown competitor price immediately" },

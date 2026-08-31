@@ -7,6 +7,7 @@ export const quizObjectionHandling: Quiz = {
   moduleIds: ["module-4"],
   passThreshold: 0.8,
   resetModules: ["module-4"],
+  heroImage: "/images/quiz-objection-handling-hero.png",
   questions: [
     {
       id: "oh-1",
@@ -27,6 +28,8 @@ export const quizObjectionHandling: Quiz = {
       moduleId: "module-4",
       type: "scenario",
       scenarioContext: "A client says: \"The price is too high.\"",
+      characterImage: "/images/mathieu-worried.png",
+      sceneImage: "/images/scene-niehodbbx-EN.png",
       prompt: "What's the correct first move?",
       options: [
         { id: "a", text: "Immediately offer the maximum 20% discount" },
@@ -98,6 +101,8 @@ export const quizObjectionHandling: Quiz = {
       moduleId: "module-4",
       type: "scenario",
       scenarioContext: "In the Tough Corporate Call scenario, Jordan mentions he's used Snapper before and it was cheaper.",
+      characterImage: "/images/mathieu-asking.png",
+      sceneImage: "/images/scene-niehodbbx-EN.png",
       prompt: "What's the strongest response?",
       options: [
         { id: "a", text: "\"We're just a better company overall, trust me.\"" },
