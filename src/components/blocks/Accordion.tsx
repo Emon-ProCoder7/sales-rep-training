@@ -35,7 +35,7 @@ export default function Accordion({ items }: { items: { title: string; blocks: C
             </button>
             {expanded && (
               <div className="px-5 pb-5">
-                <BlockRenderer blocks={item.blocks} />
+                <BlockRenderer blocks={item.blocks} animate={false} />
               </div>
             )}
           </div>

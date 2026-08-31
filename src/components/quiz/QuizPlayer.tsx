@@ -9,6 +9,8 @@ import type { AnswerValue } from "@/lib/scoring";
 import { scoreQuiz, type QuizResult } from "@/lib/scoring";
 import { applyQuizAttempt } from "@/lib/progress";
 import QuestionRenderer from "./QuestionRenderer";
+import MagneticButton from "@/components/motion/MagneticButton";
+import AnimatedNumber from "@/components/motion/AnimatedNumber";
 
 type Phase = "intro" | "question" | "result";
 
@@ -91,11 +93,19 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
         <p className="mt-3 text-slate-muted">{quiz.description}</p>
 
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <Stat label="Questions" value={String(quiz.questions.length)} />
-          <Stat label="Pass mark" value={`${Math.round(quiz.passThreshold * 100)}%`} />
-          <Stat label="Wrong answer" value="−0.5 pts" />
+          <Stat label="Questions" index={0}>
+            <AnimatedNumber value={quiz.questions.length} />
+          </Stat>
+          <Stat label="Pass mark" index={1}>
+            <AnimatedNumber value={Math.round(quiz.passThreshold * 100)} suffix="%" />
+          </Stat>
+          <Stat label="Wrong answer" index={2}>
+            −0.5 pts
+          </Stat>
           {quiz.timeLimitSeconds != null && (
-            <Stat label="Time limit" value={`${Math.round(quiz.timeLimitSeconds / 60)} min`} />
+            <Stat label="Time limit" index={3}>
+              <AnimatedNumber value={Math.round(quiz.timeLimitSeconds / 60)} suffix=" min" />
+            </Stat>
           )}
         </div>
 
@@ -109,12 +119,12 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
             : "this module's lessons get marked incomplete and you'll need to review them before retaking the quiz."}
         </div>
 
-        <button
+        <MagneticButton
           onClick={start}
           className="mt-8 rounded-full bg-ivory px-7 py-3 text-sm font-semibold text-canvas-black transition hover:brightness-95"
         >
           Start {quiz.isFinal ? "exam" : "quiz"} →
-        </button>
+        </MagneticButton>
       </div>
     );
   }
@@ -212,7 +222,7 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
             {result.passed ? "Passed" : "Not passed"}
           </p>
           <p className={`font-display mt-2 text-5xl font-bold ${result.passed ? "text-emerald-green" : "text-error"}`}>
-            {result.scorePct}%
+            <AnimatedNumber value={result.scorePct} suffix="%" duration={1.1} />
           </p>
           <p className="mt-2 text-sm text-slate-muted">
             Pass mark is {Math.round(quiz.passThreshold * 100)}%
@@ -254,20 +264,20 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
           </Link>
           {result.passed ? (
             quiz.isFinal ? (
-              <button
+              <MagneticButton
                 onClick={() => router.push("/certificate")}
                 className="rounded-full bg-ivory px-6 py-2.5 text-sm font-semibold text-canvas-black transition hover:brightness-95"
               >
                 View your certificate →
-              </button>
+              </MagneticButton>
             ) : null
           ) : (
-            <button
+            <MagneticButton
               onClick={start}
               className="rounded-full bg-ivory px-6 py-2.5 text-sm font-semibold text-canvas-black transition hover:brightness-95"
             >
               Restart {quiz.isFinal ? "exam" : "quiz"} from question 1
-            </button>
+            </MagneticButton>
           )}
         </div>
       </div>
@@ -277,11 +287,16 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
   return null;
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, children, index = 0 }: { label: string; children: React.ReactNode; index?: number }) {
   return (
-    <div className="rounded-xl border border-border bg-surface px-4 py-3 text-center">
-      <p className="font-display text-lg font-semibold text-pure-white">{value}</p>
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: 0.15 + index * 0.08 }}
+      className="rounded-xl border border-border bg-surface px-4 py-3 text-center"
+    >
+      <p className="font-display text-lg font-semibold text-pure-white">{children}</p>
       <p className="text-[11px] uppercase tracking-wide text-mid-gray">{label}</p>
-    </div>
+    </motion.div>
   );
 }

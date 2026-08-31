@@ -150,6 +150,8 @@ export default function Sidebar({ mobileOpen, onClose }: { mobileOpen?: boolean;
 function navLabel(id: string): string {
   const overrides: Record<string, string> = {
     "invoice-creation": "Proposal & Quote Creation",
+    "hubspot-crm-revenue-sheet": "GHL: Lead & Pipeline Mgmt",
+    "shoot-activation-handoff": "Shoot Activation & Handoff",
     "quiz-tools-workflow": "Tools & Workflow Quiz",
     "quiz-scripts-event-types": "Scripts & Event Types Quiz",
     "quiz-objection-handling": "Objection Handling Quiz",

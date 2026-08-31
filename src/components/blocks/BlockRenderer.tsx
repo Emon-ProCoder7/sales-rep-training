@@ -3,13 +3,27 @@ import { Spans } from "./Spans";
 import Flashcards from "./Flashcards";
 import Tabs from "./Tabs";
 import Accordion from "./Accordion";
+import ScrollReveal from "@/components/motion/ScrollReveal";
 
-export default function BlockRenderer({ blocks }: { blocks: ContentBlock[] }) {
+export default function BlockRenderer({
+  blocks,
+  animate = true,
+}: {
+  blocks: ContentBlock[];
+  /** false for nested/recursive calls (inside tabs, accordion, quote, note) to avoid animation cascades */
+  animate?: boolean;
+}) {
   return (
     <div className="space-y-4">
-      {blocks.map((block, i) => (
-        <Block key={i} block={block} />
-      ))}
+      {blocks.map((block, i) =>
+        animate ? (
+          <ScrollReveal key={i} index={i}>
+            <Block block={block} />
+          </ScrollReveal>
+        ) : (
+          <Block key={i} block={block} />
+        )
+      )}
     </div>
   );
 }
@@ -67,7 +81,7 @@ function Block({ block }: { block: ContentBlock }) {
     case "quote":
       return (
         <blockquote className="border-l-2 border-warm-beige pl-4 italic text-slate-muted">
-          <BlockRenderer blocks={block.blocks} />
+          <BlockRenderer blocks={block.blocks} animate={false} />
         </blockquote>
       );
 
@@ -83,16 +97,18 @@ function Block({ block }: { block: ContentBlock }) {
       return (
         <ol className="space-y-3">
           {block.steps.map((step, i) => (
-            <li key={i} className="flex gap-4 rounded-2xl border border-border bg-near-black p-5">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-warm-beige text-sm font-bold text-canvas-black">
-                {i + 1}
-              </span>
-              <div className="min-w-0 flex-1 space-y-2">
-                {/* step.title duplicates the heading already inside step.blocks (both come
-                    from the same source heading) - only render blocks to avoid repeating it */}
-                <BlockRenderer blocks={step.blocks} />
-              </div>
-            </li>
+            <ScrollReveal key={i} index={i}>
+              <li className="flex gap-4 rounded-2xl border border-border bg-near-black p-5 transition-colors hover:border-warm-beige/30">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-warm-beige text-sm font-bold text-canvas-black">
+                  {i + 1}
+                </span>
+                <div className="min-w-0 flex-1 space-y-2">
+                  {/* step.title duplicates the heading already inside step.blocks (both come
+                      from the same source heading) - only render blocks to avoid repeating it */}
+                  <BlockRenderer blocks={step.blocks} animate={false} />
+                </div>
+              </li>
+            </ScrollReveal>
           ))}
         </ol>
       );
@@ -109,7 +125,7 @@ function Block({ block }: { block: ContentBlock }) {
     case "note":
       return (
         <div className="rounded-2xl border border-warm-beige/30 bg-warm-beige/[0.06] p-5">
-          <BlockRenderer blocks={block.blocks} />
+          <BlockRenderer blocks={block.blocks} animate={false} />
         </div>
       );
 

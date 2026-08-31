@@ -548,6 +548,363 @@ paymentLesson.blocks = [
   },
 ];
 
+// ---------------------------------------------------------------------------
+// CRM migration (Aug 2026): Beige moved off HubSpot onto GHL (GoHighLevel),
+// with a locked-down, per-rep pipeline model. Full rewrite of the old
+// "HubSpot CRM & Revenue Sheet" lesson, provided directly by ops - not
+// something inferable from Quo messages, since it's an internal tool change.
+deepReplaceText(findLesson("welcome-to-beige").blocks, "HubSpot", "GHL");
+deepReplaceText(findLesson("your-role-earning-potential").blocks, "HubSpot", "GHL");
+deepReplaceText(findLesson("music-videos").blocks, "HubSpot", "GHL");
+deepReplaceText(findLesson("private-events").blocks, "HubSpot", "GHL");
+
+const ghlLesson = findLesson("hubspot-crm-revenue-sheet");
+ghlLesson.title = "GHL: Lead & Pipeline Management";
+ghlLesson.blocks = [
+  { type: "eyebrow", text: "MODULE 2 · TOOLS & SYSTEMS" },
+  { type: "heading", level: 2, spans: [{ text: "GHL: Lead & Pipeline Management", marks: [] }] },
+  {
+    type: "paragraph",
+    spans: [
+      {
+        text: "Beige runs lead and pipeline management on GHL (GoHighLevel), not HubSpot. Access is locked down by design: outside of 4 admin accounts, every rep sees only their own pipeline and only the leads assigned to them.",
+        marks: [],
+      },
+    ],
+  },
+  {
+    type: "note",
+    blocks: [
+      {
+        type: "paragraph",
+        spans: [
+          { text: "Why the lockdown: ", marks: ["bold"] },
+          {
+            text: "keeping lead handling inside the CRM, with the Contacts tab hidden and bulk export disabled for everyone but Superadmins, protects against data abuse or leaks, and gives leadership real visibility into individual rep KPIs, bottlenecks, and where performance coaching is needed.",
+            marks: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: "process",
+    steps: [
+      {
+        title: "1. New Leads Land in the General Pipeline",
+        blocks: [
+          { type: "heading", level: 2, spans: [{ text: "Step 1: New Leads Land in the General Pipeline", marks: [] }] },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "Every new lead starts in the General Purpose Events Pipeline, visible only to Superadmins, until a coordinator decides which rep it goes to based on rotation, availability, and whether it's a high-budget lead suited to an expert rep.",
+                marks: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "2. Coordinator Moves It to the Rep's Pipeline",
+        blocks: [
+          { type: "heading", level: 2, spans: [{ text: "Step 2: Coordinator Moves It to the Rep's Pipeline", marks: [] }] },
+          {
+            type: "list",
+            ordered: true,
+            items: [
+              [{ text: "Open the Pipeline dropdown inside the lead card.", marks: [] }],
+              [{ text: "Switch it from “General” to that rep's dedicated pipeline.", marks: [] }],
+              [{ text: "Assign the rep as Owner (or add them as a Follower).", marks: [] }],
+              [{ text: "Set the first stage in their pipeline.", marks: [] }],
+              [{ text: "Click Update.", marks: [] }],
+            ],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "The lead disappears from the General pipeline and appears in that rep's private view. From here, the rep is responsible for updating its progress themselves.",
+                marks: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "3. Rep Works the Lead Through Their Stages",
+        blocks: [
+          { type: "heading", level: 2, spans: [{ text: "Step 3: Rep Works the Lead Through Their Stages", marks: [] }] },
+          {
+            type: "paragraph",
+            spans: [{ text: "Every rep's pipeline uses the same stage sequence:", marks: [] }],
+          },
+          {
+            type: "list",
+            ordered: false,
+            items: [
+              [{ text: "New Lead", marks: ["bold"] }],
+              [{ text: "Engaged", marks: ["bold"] }],
+              [{ text: "Discovery / Qualifying", marks: ["bold"] }],
+              [{ text: "Proposal Sent", marks: ["bold"] }],
+              [{ text: "Negotiation", marks: ["bold"] }],
+              [{ text: "Pending Payment", marks: ["bold"] }],
+              [{ text: "Closed Won", marks: ["bold"] }, { text: " or ", marks: [] }, { text: "Closed Lost", marks: ["bold"] }],
+              [{ text: "Future Follow-up", marks: ["bold"] }],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: "note",
+    blocks: [
+      {
+        type: "paragraph",
+        spans: [{ text: "How existing leads carried over: ", marks: ["bold"] }],
+      },
+      {
+        type: "paragraph",
+        spans: [
+          {
+            text: "leads already assigned to a rep were moved straight into that rep's own pipeline with no data loss, and their stage carried over exactly (a lead marked “Invoice Sent” in the Events Pipeline is still “Invoice Sent” in the rep's pipeline). 927 unassigned leads and 14 sample opportunities under Sam and Swift remain in the General Events Pipeline for now.",
+            marks: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: "accordion",
+    items: [
+      {
+        title: "Rep says they can't see a lead",
+        blocks: [
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Why it happens: ", marks: ["bold"] },
+              { text: "the Owner field is empty.", marks: [] },
+            ],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Fix: ", marks: ["bold"] },
+              { text: "go to the lead and select the rep as the Owner.", marks: [] },
+            ],
+          },
+        ],
+      },
+      {
+        title: "The lead is showing in two pipelines at once",
+        blocks: [
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Why it happens: ", marks: ["bold"] },
+              { text: "it wasn't moved correctly.", marks: [] },
+            ],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Fix: ", marks: ["bold"] },
+              { text: "open the lead and set the Pipeline dropdown to the rep's pipeline only.", marks: [] },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Rep can't export the lead database",
+        blocks: [
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Why it happens: ", marks: ["bold"] },
+              { text: "export and bulk-copy permissions are locked for data safety.", marks: [] },
+            ],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Fix: ", marks: ["bold"] },
+              { text: "this is correct behavior, not a bug. Reps are never permitted to export or bulk-copy lead data.", marks: [] },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+// New lesson: Shoot Activation & Handoff. This didn't exist in any prior
+// version of the training - it's a brand-new formal SOP for the moment a
+// deal closes, covering the handoff from Sales to Production and Accounting.
+generated.push({
+  id: "shoot-activation-handoff",
+  moduleId: "module-2",
+  title: "Shoot Activation & Handoff (SAH)",
+  order: generated.length,
+  blocks: [
+    { type: "eyebrow", text: "MODULE 2 · TOOLS & SYSTEMS" },
+    { type: "heading", level: 2, spans: [{ text: "Shoot Activation & Handoff (SAH)", marks: [] }] },
+    {
+      type: "paragraph",
+      spans: [
+        {
+          text: "SAH is the official handoff of a paid project from Sales to Client Success, Production, Post-Production, and Accounting. It confirms payment, logs revenue, informs the client, and activates production. A project is not considered handed off until every SAH step below is complete.",
+          marks: [],
+        },
+      ],
+    },
+    {
+      type: "note",
+      blocks: [
+        {
+          type: "paragraph",
+          spans: [
+            { text: "Ownership: ", marks: ["bold"] },
+            {
+              text: "the sales rep who closed the deal is the primary owner of SAH. Production and Accounting are secondary stakeholders who rely on a completed SAH before taking ownership of the project.",
+              marks: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "process",
+      steps: [
+        {
+          title: "1. Verify Payment",
+          blocks: [
+            { type: "heading", level: 2, spans: [{ text: "Step 1: Verify Payment", marks: [] }] },
+            {
+              type: "paragraph",
+              spans: [{ text: "Confirm payment was successfully received, through a Stripe payment notification, the Stripe dashboard, an Accounting confirmation, or another approved payment channel.", marks: [] }],
+            },
+            {
+              type: "paragraph",
+              spans: [{ text: "Do not begin SAH until payment is confirmed.", marks: ["bold"] }],
+            },
+          ],
+        },
+        {
+          title: "2. Confirm Payment Is Recorded in beige.app",
+          blocks: [
+            { type: "heading", level: 2, spans: [{ text: "Step 2: Confirm Payment Is Recorded in beige.app", marks: [] }] },
+            {
+              type: "list",
+              ordered: false,
+              items: [
+                [{ text: "Locate the client's quote inside beige.app.", marks: [] }],
+                [{ text: "Verify the payment has been recorded.", marks: [] }],
+                [{ text: "If it wasn't recorded automatically, record it manually before moving on.", marks: [] }],
+                [{ text: "Confirm the invoice reflects the correct amount paid and any remaining balance.", marks: [] }],
+              ],
+            },
+          ],
+        },
+        {
+          title: "3. Send Client Handoff Message",
+          blocks: [
+            { type: "heading", level: 2, spans: [{ text: "Step 3: Send Client Handoff Message", marks: [] }] },
+            {
+              type: "paragraph",
+              spans: [{ text: "Once payment is confirmed, text this to the client on the same Quo line used throughout the sales process:", marks: [] }],
+            },
+            {
+              type: "quote",
+              blocks: [
+                {
+                  type: "paragraph",
+                  spans: [{ text: "Hi [Client Name],", marks: ["italic"] }],
+                },
+                {
+                  type: "paragraph",
+                  spans: [{ text: "Thank you for your payment and for choosing Beige! We've successfully received your payment and your project has now been activated.", marks: ["italic"] }],
+                },
+                {
+                  type: "paragraph",
+                  spans: [{ text: "From this point forward, a member of our Production Team will be reaching out shortly to guide you through the next steps and help prepare everything for your upcoming shoot.", marks: ["italic"] }],
+                },
+                {
+                  type: "paragraph",
+                  spans: [{ text: "We're excited to work with you and appreciate the opportunity to bring your vision to life!", marks: ["italic"] }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "4. Update Revenue Sheet",
+          blocks: [
+            { type: "heading", level: 2, spans: [{ text: "Step 4: Update Revenue Sheet", marks: [] }] },
+            {
+              type: "paragraph",
+              spans: [{ text: "Add the project to the Revenue Sheet using the details in beige.app and the approved quote. Required fields:", marks: [] }],
+            },
+            {
+              type: "list",
+              ordered: false,
+              items: [
+                [{ text: "Client Name, Source, Status, Payment Terms", marks: [] }],
+                [{ text: "City, State, Category, Email, Phone Number", marks: [] }],
+                [{ text: "Total Deal, Amount Paid, Date Amount Paid", marks: [] }],
+                [{ text: "Amount Due, Date Amount Due, Date Closed", marks: [] }],
+                [{ text: "Shoot Date, Invoice Number, Invoice Link", marks: [] }],
+                [{ text: "Payment Method, Rep Name", marks: [] }],
+              ],
+            },
+          ],
+        },
+        {
+          title: "5. Create New Shoot Announcement",
+          blocks: [
+            { type: "heading", level: 2, spans: [{ text: "Step 5: Create New Shoot Announcement", marks: [] }] },
+            {
+              type: "paragraph",
+              spans: [{ text: "Post the official handoff in Discord #newshoots. This is the activation notice for Client Success and Production, in this format:", marks: [] }],
+            },
+            {
+              type: "quote",
+              blocks: [
+                { type: "paragraph", spans: [{ text: "New Shoots: [Project Title]", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "Line: [State / Quo Line]", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "Deal Owner (Sales Rep): [Rep Name]", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "Shoot Link: [Shoot Link]", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "Payment Status: [$__ Paid in Full / $$__ Deposit Received]", marks: ["code"] }] },
+              ],
+            },
+          ],
+        },
+        {
+          title: "6. Post Payment Confirmation",
+          blocks: [
+            { type: "heading", level: 2, spans: [{ text: "Step 6: Post Payment Confirmation in #in_payment_rih", marks: [] }] },
+            {
+              type: "paragraph",
+              spans: [{ text: "After the Revenue Sheet is updated, post the confirmation in the designated payment channel:", marks: [] }],
+            },
+            {
+              type: "quote",
+              blocks: [
+                { type: "paragraph", spans: [{ text: "[Shoot Name as written in the Discord New Shoot post]", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "Payment Status: Paid in Full / Partial Payment", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "Revenue Sheet: Completed ✅", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "New Shoot: Posted ✅", marks: ["code"] }] },
+                { type: "paragraph", spans: [{ text: "SAH: Completed ✅", marks: ["code"] }] },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+});
+
 export const LESSONS: Lesson[] = generated;
 
 export const LESSONS_BY_ID: Record<string, Lesson> = Object.fromEntries(
@@ -579,7 +936,7 @@ export const MODULES: Module[] = [
     order: 2,
     title: "Tools & Systems",
     shortTitle: "Tools",
-    description: "The full lead-to-cash workflow: Thumbtack, OpenPhone, beige.app, HubSpot, Slack & Discord.",
+    description: "The full lead-to-cash workflow: Thumbtack, OpenPhone, beige.app, GHL, Slack & Discord.",
     color: "#e8d1ab",
     coverImage: "/images/module-2-cover.png",
     items: [
@@ -588,6 +945,7 @@ export const MODULES: Module[] = [
       { kind: "lesson", id: "scheduling-discovery-calls" },
       { kind: "lesson", id: "invoice-creation" },
       { kind: "lesson", id: "payment-processing-policies" },
+      { kind: "lesson", id: "shoot-activation-handoff" },
       { kind: "lesson", id: "hubspot-crm-revenue-sheet" },
       { kind: "lesson", id: "slack-discord-communication" },
       { kind: "lesson", id: "follow-up-pending-client-status" },

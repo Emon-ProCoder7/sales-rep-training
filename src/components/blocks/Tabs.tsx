@@ -26,7 +26,7 @@ export default function Tabs({ tabs }: { tabs: { label: string; blocks: ContentB
         ))}
       </div>
       <div className="p-5">
-        <BlockRenderer blocks={tabs[active].blocks} />
+        <BlockRenderer blocks={tabs[active].blocks} animate={false} />
       </div>
     </div>
   );

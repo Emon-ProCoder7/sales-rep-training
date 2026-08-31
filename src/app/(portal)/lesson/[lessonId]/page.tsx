@@ -9,6 +9,7 @@ import BlockRenderer from "@/components/blocks/BlockRenderer";
 import ScenarioPlayer from "@/components/ScenarioPlayer";
 import { isLessonComplete, isLessonUnlocked, markLessonComplete } from "@/lib/progress";
 import { useMounted } from "@/lib/useMounted";
+import MagneticButton from "@/components/motion/MagneticButton";
 
 export default function LessonPage({ params }: { params: Promise<{ lessonId: string }> }) {
   const { lessonId } = use(params);
@@ -86,12 +87,12 @@ export default function LessonPage({ params }: { params: Promise<{ lessonId: str
         <Link href="/dashboard" className="text-sm text-slate-muted hover:text-pure-white">
           ← Dashboard
         </Link>
-        <button
+        <MagneticButton
           onClick={complete_}
           className="rounded-full bg-ivory px-6 py-2.5 text-sm font-semibold text-canvas-black transition hover:brightness-95"
         >
           {complete ? "Continue →" : "Mark complete & continue →"}
-        </button>
+        </MagneticButton>
       </div>
     </div>
   );
