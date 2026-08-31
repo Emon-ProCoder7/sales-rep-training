@@ -149,6 +149,7 @@ export default function Sidebar({ mobileOpen, onClose }: { mobileOpen?: boolean;
 
 function navLabel(id: string): string {
   const overrides: Record<string, string> = {
+    "invoice-creation": "Proposal & Quote Creation",
     "quiz-tools-workflow": "Tools & Workflow Quiz",
     "quiz-scripts-event-types": "Scripts & Event Types Quiz",
     "quiz-objection-handling": "Objection Handling Quiz",

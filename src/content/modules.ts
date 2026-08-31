@@ -47,6 +47,21 @@ const generated: Lesson[] = (rawLessons as any[]).map((raw, idx) => {
   };
 });
 
+// Recursively swaps text across a lesson's blocks - used for terminology corrections
+// that don't warrant a full section rewrite (see the "process refresh" pass below).
+function deepReplaceText(node: any, from: string, to: string) {
+  if (Array.isArray(node)) {
+    node.forEach((n) => deepReplaceText(n, from, to));
+    return;
+  }
+  if (node && typeof node === "object") {
+    if (typeof node.text === "string" && node.text.includes(from)) {
+      node.text = node.text.split(from).join(to);
+    }
+    for (const key of Object.keys(node)) deepReplaceText(node[key], from, to);
+  }
+}
+
 // Editorial additions: the "Universal Call Script Framework" page lost
 // its entire body to a never-rendered AI-video placeholder (video: null in the
 // source). Replaced with an authored process breakdown grounded in the storyboard
@@ -182,40 +197,6 @@ findLesson("initial-client-contact").blocks.push({
   ],
 });
 
-findLesson("invoice-creation").blocks.push({
-  type: "note",
-  blocks: [
-    {
-      type: "paragraph",
-      spans: [
-        {
-          text: "Live-verified update: ",
-          marks: ["bold"],
-        },
-        {
-          text: "proposals are now commonly sent as a beige.app quote link (beige.app/quotes/preview?quoteKey=...) alongside Invoice Simple. Same information either way — package details, price, and a one-click view for the client.",
-          marks: [],
-        },
-      ],
-    },
-  ],
-});
-
-findLesson("payment-processing-policies").blocks.push({
-  type: "note",
-  blocks: [
-    {
-      type: "paragraph",
-      spans: [
-        { text: "Live-verified Zelle details: ", marks: ["bold"] },
-        { text: "accounting@beigecorporation.io, or the Zelle tag ", marks: [] },
-        { text: "@beigecorp", marks: ["bold", "code"] },
-        { text: " — either works, share whichever is easier for the client.", marks: [] },
-      ],
-    },
-  ],
-});
-
 findLesson("weddings").blocks.push({
   type: "note",
   blocks: [
@@ -296,6 +277,277 @@ generated.push({
   ],
 });
 
+// ---------------------------------------------------------------------------
+// Process refresh (Aug 2026): a wider pull of live Quo threads - 100 recent
+// conversations, ~400 messages, across every sales zone - shows the deal flow
+// has moved on from what the original course describes. Zero occurrences of
+// "Invoice Simple" or "HoneyBook" turned up anywhere in that sample; every
+// proposal instead goes out as a beige.app quote link
+// (beige.app/quotes/preview?quoteKey=...), which also handles the client's
+// digital signature on the same page ("Just saw contract signed!" - no
+// separate contract step). Every payment instruction observed was Zelle
+// (accounting@beigecorporation.io or the tag @beigecorp) sent directly over
+// text; no wire transfer or credit card payment appeared in the sample.
+// Terminology swaps for lessons that only mention the old tool name in passing:
+deepReplaceText(findLesson("welcome-to-beige").blocks, "Invoice Simple", "beige.app");
+deepReplaceText(findLesson("your-role-earning-potential").blocks, "Invoice Simple", "beige.app");
+deepReplaceText(findLesson("hubspot-crm-revenue-sheet").blocks, "Invoice Simple estimate link", "beige.app quote link");
+deepReplaceText(findLesson("hubspot-crm-revenue-sheet").blocks, "Invoice Simple", "beige.app");
+
+// Full rewrite: the invoice-creation lesson's actual steps changed, not just
+// the tool's name (quoting and contract signing merged into one beige.app page).
+const proposalLesson = findLesson("invoice-creation");
+proposalLesson.title = "Proposal & Quote Creation";
+proposalLesson.blocks = [
+  { type: "eyebrow", text: "MODULE 2 · TOOLS & SYSTEMS" },
+  { type: "heading", level: 2, spans: [{ text: "Proposal & Quote Creation", marks: [] }] },
+  {
+    type: "paragraph",
+    spans: [
+      {
+        text: "Every proposal now goes out through beige.app's built-in quoting tool. It replaced the old Invoice Simple workflow entirely — live deal threads show zero Invoice Simple usage, and the beige.app quote page does more in one step: pricing, package details, and the client's digital signature all live on the same link.",
+        marks: [],
+      },
+    ],
+  },
+  {
+    type: "process",
+    steps: [
+      {
+        title: "1. Gather Client Info",
+        blocks: [
+          {
+            type: "heading",
+            level: 2,
+            spans: [{ text: "Step 1: Gather Client Info", marks: [] }],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Pull everything from the ", marks: [] },
+              { text: "Thumbtack inquiry", marks: ["bold"] },
+              { text: ": full name, phone number, mailing address, email address. Double-check these — errors here create friction later.", marks: [] },
+            ],
+          },
+        ],
+      },
+      {
+        title: "2. Build the Quote in beige.app",
+        blocks: [
+          {
+            type: "heading",
+            level: 2,
+            spans: [{ text: "Step 2: Build the Quote in beige.app", marks: [] }],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              { text: "Create the quote directly in ", marks: [] },
+              { text: "beige.app", marks: ["bold"] },
+              { text: " with: package and service details, shoot date, location, coverage hours, crew/camera setup, and edit deliverables.", marks: [] },
+            ],
+          },
+          {
+            type: "list",
+            ordered: false,
+            items: [
+              [{ text: "Standard inclusions to add every time: creative direction, IP rights (client owns the raw content), $1M liability insurance.", marks: [] }],
+            ],
+          },
+        ],
+      },
+      {
+        title: "3. Send the Quote Link",
+        blocks: [
+          {
+            type: "heading",
+            level: 2,
+            spans: [{ text: "Step 3: Send the Quote Link", marks: [] }],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "beige.app generates a shareable link in the form beige.app/quotes/preview?quoteKey=... Text it to the client via OpenPhone (Quo) right after the call, and have it emailed as a backup in case the text bounces.",
+                marks: [],
+              },
+            ],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              { text: "This one link is the whole proposal experience: ", marks: [] },
+              { text: "the client reviews pricing and signs on the same page", marks: ["bold"] },
+              { text: " — there's no separate contract step to chase down.", marks: [] },
+            ],
+          },
+        ],
+      },
+      {
+        title: "4. Follow Up",
+        blocks: [
+          {
+            type: "heading",
+            level: 2,
+            spans: [{ text: "Step 4: Follow Up", marks: [] }],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "If the client hasn't opened or signed within a day or two, send a short check-in referencing the quote directly — real threads show this is often what gets a stalled deal moving again.",
+                marks: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: "note",
+    blocks: [
+      {
+        type: "paragraph",
+        spans: [{ text: "What changed from the old training: ", marks: ["bold"] }],
+      },
+      {
+        type: "paragraph",
+        spans: [
+          {
+            text: "Invoice Simple is no longer part of the live workflow. beige.app's quote tool replaced it end to end — one link covers the proposal, the pricing breakdown, and the client's signature, confirmed from real deal threads (\"Just saw contract signed!\" right after a beige.app quote link went out).",
+            marks: [],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+// Full rewrite: payment collection has consolidated onto Zelle in practice,
+// and HoneyBook's payment-link/access-code step no longer appears anywhere.
+const paymentLesson = findLesson("payment-processing-policies");
+paymentLesson.blocks = [
+  { type: "eyebrow", text: "MODULE 2 · TOOLS & SYSTEMS" },
+  { type: "heading", level: 2, spans: [{ text: "Payment Processing & Policies", marks: [] }] },
+  {
+    type: "process",
+    steps: [
+      {
+        title: "1. Quote Edits",
+        blocks: [
+          {
+            type: "heading",
+            level: 2,
+            spans: [{ text: "Step 1: Quote Edits", marks: [] }],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "Need to add extra hours, remove tax, or adjust anything after sending? Update the beige.app quote, notify the client via OpenPhone, update the Revenue Sheet, and inform the team in Discord + Slack.",
+                marks: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "2. Collecting Payment",
+        blocks: [
+          {
+            type: "heading",
+            level: 2,
+            spans: [{ text: "Step 2: Collecting Payment", marks: [] }],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "Once the client signs the beige.app quote, send Zelle payment instructions directly over text — no separate payment-link tool involved:",
+                marks: [],
+              },
+            ],
+          },
+          {
+            type: "list",
+            ordered: false,
+            items: [
+              [{ text: "Zelle email: accounting@beigecorporation.io", marks: [] }],
+              [{ text: "Zelle tag: @beigecorp", marks: [] }],
+            ],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "Zelle is the default for nearly every deal today. Wire transfer or a card payment can still be arranged for a client who specifically needs one — mention the 4% processing fee if a card comes up — but lead with Zelle.",
+                marks: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "3. Confirming Receipt",
+        blocks: [
+          {
+            type: "heading",
+            level: 2,
+            spans: [{ text: "Step 3: Confirming Receipt", marks: [] }],
+          },
+          {
+            type: "paragraph",
+            spans: [
+              {
+                text: "When the client confirms the Zelle payment is sent, thank them, let them know pre-production is starting, and log the payment in the Revenue Sheet.",
+                marks: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: "note",
+    blocks: [
+      {
+        type: "heading",
+        level: 3,
+        spans: [{ text: "Payment Policy (unchanged)", marks: [] }],
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          [{ text: "Corporate clients: full payment.", marks: [] }],
+          [{ text: "Non-corporate clients: 50% deposit to lock the date, remainder due 3 days before the shoot.", marks: [] }],
+          [{ text: "Rush bookings (under 7 days out): 100% upfront.", marks: [] }],
+        ],
+      },
+    ],
+  },
+  {
+    type: "note",
+    blocks: [
+      {
+        type: "paragraph",
+        spans: [{ text: "What changed from the old training: ", marks: ["bold"] }],
+      },
+      {
+        type: "paragraph",
+        spans: [
+          {
+            text: "HoneyBook is no longer used to generate payment links or confirm receipt — that concept (and the \"never include the access code\" rule) is gone. Payment info now goes straight to the client as a Zelle email/tag in a text message.",
+            marks: [],
+          },
+        ],
+      },
+    ],
+  },
+];
+
 export const LESSONS: Lesson[] = generated;
 
 export const LESSONS_BY_ID: Record<string, Lesson> = Object.fromEntries(
@@ -327,7 +579,7 @@ export const MODULES: Module[] = [
     order: 2,
     title: "Tools & Systems",
     shortTitle: "Tools",
-    description: "The full lead-to-cash workflow: Thumbtack, OpenPhone, Invoice Simple, HubSpot, Slack & Discord.",
+    description: "The full lead-to-cash workflow: Thumbtack, OpenPhone, beige.app, HubSpot, Slack & Discord.",
     color: "#e8d1ab",
     coverImage: "/images/module-2-cover.png",
     items: [

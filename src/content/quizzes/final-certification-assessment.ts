@@ -172,15 +172,15 @@ export const finalCertificationAssessment: Quiz = {
       id: "fc-12",
       moduleId: "module-2",
       type: "single",
-      prompt: "Payment link just went out via OpenPhone. What must never be included in that message?",
+      prompt: "A client just signed their beige.app quote and asked how to pay. What do you send?",
       options: [
-        { id: "a", text: "The client's name" },
-        { id: "b", text: "The HoneyBook access code" },
-        { id: "c", text: "The total amount due" },
-        { id: "d", text: "A thank-you note" },
+        { id: "a", text: "The Zelle email or @beigecorp tag, directly over text" },
+        { id: "b", text: "A HoneyBook payment link with an access code" },
+        { id: "c", text: "Nothing — wait for accounting to reach out" },
+        { id: "d", text: "A separate Invoice Simple estimate" },
       ],
-      correctOptionId: "b",
-      explanation: "Never include the HoneyBook access code in the OpenPhone message — it's a security policy.",
+      correctOptionId: "a",
+      explanation: "Payment now runs through Zelle (accounting@beigecorporation.io or @beigecorp) sent directly over text once the beige.app quote is signed — no separate invoicing or payment-link tool involved.",
     },
 
     // ---- Module 3: Call Scripts & Event Types ----
