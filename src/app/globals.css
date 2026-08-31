@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* Design tokens extracted from Beige's live product/marketing site
+   (Beige Site Design Md/) - dark-first, warm beige accent. */
+:root {
+  color-scheme: dark;
+
+  --color-canvas-black: #101010;
+  --color-near-black: #171717;
+  --color-dark-surface-alt: #151515;
+  --color-surface: #1f1f1f;
+  --color-pure-white: #ffffff;
+  --color-warm-beige: #e8d1ab;
+  --color-ivory: #ece1ce;
+  --color-slate-muted: #a1aebe;
+  --color-mid-gray: #a9a9a9;
+  --color-emerald-green: #14c573;
+  --color-deep-charcoal: #211f1c;
+  --color-pure-black: #000000;
+  --color-border: #2a2a2a;
+  --color-error: #ef4444;
+
+  --background: var(--color-canvas-black);
+  --foreground: var(--color-pure-white);
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+}
+
+@theme inline {
+  --color-canvas-black: var(--color-canvas-black);
+  --color-near-black: var(--color-near-black);
+  --color-dark-surface-alt: var(--color-dark-surface-alt);
+  --color-surface: var(--color-surface);
+  --color-warm-beige: var(--color-warm-beige);
+  --color-ivory: var(--color-ivory);
+  --color-slate-muted: var(--color-slate-muted);
+  --color-mid-gray: var(--color-mid-gray);
+  --color-emerald-green: var(--color-emerald-green);
+  --color-deep-charcoal: var(--color-deep-charcoal);
+  --color-border: var(--color-border);
+  --color-error: var(--color-error);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+::selection {
+  background: var(--color-warm-beige);
+  color: var(--color-canvas-black);
+}
+
+.font-display {
+  letter-spacing: -0.04em;
+}
+
+/* Subtle scrollbar to match the dark editorial surface */
+* {
+  scrollbar-color: var(--color-border) transparent;
+}

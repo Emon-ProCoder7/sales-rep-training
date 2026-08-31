@@ -1,0 +1,95 @@
+{
+  "lwsxludvc": {
+    "rootId": "wyvkrofzn",
+    "nodes": {
+      "wyvkrofzn": {
+        "id": "wyvkrofzn",
+        "kind": "choice",
+        "text": "\"Hey, I saw your message on Thumbtack. We need videography for our annual company summit — about 200 employees. We've used Snapper in the past so I want to see if you guys are worth switching to.\"",
+        "characterImage": "/images/mathieu-neutral.png",
+        "sceneId": "niehodbbx",
+        "options": [
+          {
+            "text": "\"Thanks so much for reaching out Jordan! We've actually worked with companies like Amazon, Chase, and Rolls Royce for their corporate events — we'd love to add your team to that list. Can you tell me a bit more about the summit?\"",
+            "feedback": "Perfect — you opened with brand credibility relevant to a corporate client, and immediately moved into discovery. This builds trust fast.",
+            "reactionImage": "/images/mathieu-talking.png",
+            "nextId": "ktqwrvsid",
+            "outcomeId": "n1-good",
+            "isBest": true
+          },
+          {
+            "text": "\"Hi Jordan! Yeah we're great. What's your budget?\"",
+            "feedback": "Leading with budget before building value is a mistake — it signals you're more interested in money than their needs.",
+            "reactionImage": "/images/mathieu-confused.png",
+            "nextId": null,
+            "outcomeId": "n1-bad",
+            "isBest": false
+          }
+        ]
+      },
+      "ktqwrvsid": {
+        "id": "ktqwrvsid",
+        "kind": "choice",
+        "text": "\"We've used Snapper before and it was a lot cheaper. What makes Beige worth the price difference?\"",
+        "characterImage": "/images/mathieu-asking.png",
+        "sceneId": "niehodbbx",
+        "options": [
+          {
+            "text": "\"Great question. We carry $1 million in liability insurance on every shoot, we guarantee a crew backup in case of any emergency, and we deliver all raw footage — you own the IP. Snapper doesn't offer any of that. For a 200-person company summit, do you really want to risk it with an uninsured freelancer?\"",
+            "feedback": "Excellent. You deployed the Beige trifecta — insurance, Beige Guarantee, and RAW content — and tied it directly to the risk context of a large corporate event. That's a winning response.",
+            "reactionImage": "/images/mathieu-thinking.png",
+            "nextId": "zuvfwxiwy",
+            "outcomeId": "n2-good",
+            "isBest": true
+          },
+          {
+            "text": "\"We're just a better company overall, trust us.\"",
+            "feedback": "Vague claims without proof won't convince a skeptical corporate client. Always use specific differentiators backed by facts.",
+            "reactionImage": "/images/mathieu-confused.png",
+            "nextId": null,
+            "outcomeId": "n2-bad",
+            "isBest": false
+          }
+        ]
+      },
+      "zuvfwxiwy": {
+        "id": "zuvfwxiwy",
+        "kind": "choice",
+        "text": "\"Okay, that's helpful. But can you bring the price down at all? We have a tight events budget this quarter.\"",
+        "characterImage": "/images/mathieu-worried.png",
+        "sceneId": "niehodbbx",
+        "options": [
+          {
+            "text": "\"Let me check with my team and see what I can do. In the meantime — would you be open to a paid-in-full discount? If you can pay the full amount today, I can usually get a better rate approved.\"",
+            "feedback": "Smart. You didn't immediately cave on price — you bought time by checking with your team (even if you have authority) and introduced the paid-in-full incentive. This is professional discount strategy.",
+            "reactionImage": "/images/mathieu-thinking.png",
+            "nextId": "zuvskpyll",
+            "outcomeId": "n3-good",
+            "isBest": true
+          },
+          {
+            "text": "\"Sure, I can do 30% off right now to help you out.\"",
+            "feedback": "30% exceeds your discount ceiling of 20%. Never offer more than 20% without manager approval — and never give a discount without at least appearing to consult your team first.",
+            "reactionImage": "/images/mathieu-surprised.png",
+            "nextId": null,
+            "outcomeId": "n3-bad",
+            "isBest": false
+          }
+        ]
+      },
+      "zuvskpyll": {
+        "id": "zuvskpyll",
+        "kind": "narration",
+        "text": "Jordan pauses, then says: \"Okay. Send me the proposal. If the numbers work out, let's do this.\"\nYou nailed it. You opened with credibility, defended value with specific differentiators, and handled the price objection strategically without going over your discount ceiling. Send that proposal immediately.\nKey reminder: Corporate clients expect full payment upfront. Make sure the payment structure in your proposal reflects that.",
+        "characterImage": "/images/mathieu-happy.png",
+        "sceneId": "niehodbbx",
+        "result": "correct",
+        "nextId": null
+      }
+    }
+  },
+  "scene:niehodbbx": {
+    "name": "Call Center",
+    "src": "/images/scene-niehodbbx-EN.png"
+  }
+}
