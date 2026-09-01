@@ -17,7 +17,7 @@ export type ContentBlock =
   | { type: "image"; src: string; alt: string; caption?: string }
   | {
       type: "process";
-      steps: { title: string; blocks: ContentBlock[]; imageHint?: string | null }[];
+      steps: { title: string; blocks: ContentBlock[]; imageHint?: string | null; image?: string }[];
     }
   | { type: "flashcards"; items: { front: string; back: string }[] }
   | { type: "tabs"; tabs: { label: string; blocks: ContentBlock[] }[] }

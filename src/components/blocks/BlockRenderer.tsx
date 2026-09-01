@@ -4,6 +4,7 @@ import Flashcards from "./Flashcards";
 import Tabs from "./Tabs";
 import Accordion from "./Accordion";
 import ScrollReveal from "@/components/motion/ScrollReveal";
+import Tilt3DCard from "@/components/motion/Tilt3DCard";
 
 export default function BlockRenderer({
   blocks,
@@ -87,10 +88,17 @@ function Block({ block }: { block: ContentBlock }) {
 
     case "image":
       return (
-        <figure className="overflow-hidden rounded-2xl border border-border">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={block.src} alt={block.alt} className="w-full object-cover" />
-        </figure>
+        <Tilt3DCard>
+          <figure className="m-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={block.src} alt={block.alt} className="aspect-[4/3] w-full object-cover sm:aspect-[16/9]" />
+            {block.caption && (
+              <figcaption className="border-t border-border bg-near-black px-4 py-2 text-xs text-mid-gray">
+                {block.caption}
+              </figcaption>
+            )}
+          </figure>
+        </Tilt3DCard>
       );
 
     case "process":
@@ -98,15 +106,21 @@ function Block({ block }: { block: ContentBlock }) {
         <ol className="space-y-3">
           {block.steps.map((step, i) => (
             <ScrollReveal key={i} index={i}>
-              <li className="flex gap-4 rounded-2xl border border-border bg-near-black p-5 transition-colors hover:border-warm-beige/30">
+              <li className="flex flex-col gap-4 rounded-2xl border border-border bg-near-black p-5 transition-colors hover:border-warm-beige/30 sm:flex-row">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-warm-beige text-sm font-bold text-canvas-black">
                   {i + 1}
                 </span>
-                <div className="min-w-0 flex-1 space-y-2">
+                <div className="min-w-0 flex-1 space-y-3">
                   {/* step.title duplicates the heading already inside step.blocks (both come
                       from the same source heading) - only render blocks to avoid repeating it */}
                   <BlockRenderer blocks={step.blocks} animate={false} />
                 </div>
+                {step.image && (
+                  <Tilt3DCard className="w-full shrink-0 sm:w-40" maxTilt={7}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={step.image} alt="" className="aspect-[4/3] w-full object-cover" />
+                  </Tilt3DCard>
+                )}
               </li>
             </ScrollReveal>
           ))}

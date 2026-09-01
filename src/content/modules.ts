@@ -153,6 +153,26 @@ function findLesson(id: string) {
   return l;
 }
 
+// Inserts a full-width lead image right after the lesson's heading block, so every
+// lesson opens with a relevant visual instead of jumping straight into body text.
+function insertHeroImage(id: string, src: string, alt: string) {
+  const l = findLesson(id);
+  const headingIdx = l.blocks.findIndex((b) => b.type === "heading");
+  const insertAt = headingIdx === -1 ? 0 : headingIdx + 1;
+  l.blocks.splice(insertAt, 0, { type: "image", src, alt });
+}
+
+// Attaches a relevant photo/screenshot to each step of a lesson's process block,
+// so multi-step SOPs read as an illustrated walkthrough rather than a text wall.
+function addStepImages(id: string, images: string[]) {
+  const l = findLesson(id);
+  const proc = l.blocks.find((b) => b.type === "process");
+  if (!proc || proc.type !== "process") throw new Error(`No process block in lesson ${id}`);
+  proc.steps.forEach((step, i) => {
+    if (images[i]) step.image = images[i];
+  });
+}
+
 findLesson("lead-hit-funnel").blocks.push({
   type: "note",
   blocks: [
@@ -904,6 +924,89 @@ generated.push({
     },
   ],
 });
+
+// ---------------------------------------------------------------------------
+// Visual pass (Aug 2026): the lesson bodies were pure text - every module read
+// as a wall of paragraphs and process steps with nothing to look at. Adds an
+// AI-generated lead image to every lesson that had none, and a per-step photo
+// to every multi-step process so SOPs read as an illustrated walkthrough.
+insertHeroImage("lead-hit-funnel", "/images/hero-lead-hit-funnel.png", "A sales rep's phone lighting up with a new lead notification");
+insertHeroImage("scheduling-discovery-calls", "/images/hero-scheduling-calls.png", "A salesperson scheduling a discovery call on a digital calendar");
+insertHeroImage("invoice-creation", "/images/hero-proposal-quote.png", "A laptop screen showing a digital quote and e-signature interface");
+insertHeroImage("payment-processing-policies", "/images/hero-payment-processing.png", "A smartphone showing a payment confirmation notification");
+insertHeroImage("shoot-activation-handoff", "/images/hero-shoot-activation.png", "A film production crew activating a shoot on set");
+insertHeroImage("hubspot-crm-revenue-sheet", "/images/hero-ghl-pipeline.png", "A CRM pipeline board with deal cards across stages");
+insertHeroImage("slack-discord-communication", "/images/hero-slack-discord.png", "Two team chat app interfaces side by side");
+insertHeroImage("universal-call-script-framework", "/images/hero-universal-call-framework.png", "A confident sales rep on a call with a structured script visible");
+insertHeroImage("corporate-events", "/images/hero-corporate-events.png", "A corporate conference event being filmed");
+insertHeroImage("private-events", "/images/hero-private-events.png", "A vibrant birthday celebration with balloons and string lights");
+insertHeroImage("film-projects", "/images/hero-film-projects.png", "A behind-the-scenes film set with lighting rigs");
+insertHeroImage("sms-voicemail-quick-reference", "/images/hero-sms-voicemail.png", "A smartphone showing a text message thread and voicemail icon");
+insertHeroImage("common-objections-rebuttals", "/images/hero-objection-handling.png", "Two business people in a confident handshake negotiation");
+insertHeroImage("follow-up-urgency-strategy", "/images/hero-followup-urgency.png", "A salesperson checking a countdown timer next to a follow-up reminder");
+
+addStepImages("your-role-earning-potential", [
+  "/images/step-role-receive-lead.png",
+  "/images/step-role-first-contact.png",
+  "/images/step-role-discovery-call.png",
+  "/images/step-role-send-proposal.png",
+  "/images/step-role-close-payment.png",
+]);
+addStepImages("lead-hit-funnel", [
+  "/images/step-funnel-lead-arrives.png",
+  "/images/step-funnel-notify-slack.png",
+  "/images/step-funnel-apply-template.png",
+  "/images/step-funnel-assign-schedule.png",
+]);
+addStepImages("scheduling-discovery-calls", [
+  "/images/step-sched-find-client.png",
+  "/images/step-sched-create-event.png",
+  "/images/step-sched-send-invite.png",
+  "/images/step-sched-confirm.png",
+]);
+addStepImages("invoice-creation", [
+  "/images/step-quote-gather-info.png",
+  "/images/step-quote-build-beigeapp.png",
+  "/images/step-quote-send-link.png",
+  "/images/step-quote-followup.png",
+]);
+addStepImages("payment-processing-policies", [
+  "/images/step-payment-quote-edits.png",
+  "/images/step-payment-collecting.png",
+  "/images/step-payment-confirming.png",
+]);
+addStepImages("shoot-activation-handoff", [
+  "/images/step-sah-verify-payment.png",
+  "/images/step-sah-confirm-recorded.png",
+  "/images/step-sah-client-message.png",
+  "/images/step-sah-revenue-sheet.png",
+  "/images/step-sah-shoot-announcement.png",
+  "/images/step-sah-payment-confirmation.png",
+]);
+addStepImages("hubspot-crm-revenue-sheet", [
+  "/images/step-ghl-new-leads.png",
+  "/images/step-ghl-coordinator-moves.png",
+  "/images/step-ghl-rep-works-stages.png",
+]);
+addStepImages("slack-discord-communication", [
+  "/images/step-comms-pre-securing.png",
+  "/images/step-comms-new-shoot-channel.png",
+  "/images/step-comms-production.png",
+  "/images/step-comms-post-production.png",
+  "/images/step-comms-user-success.png",
+]);
+addStepImages("follow-up-pending-client-status", [
+  "/images/step-followup-immediately.png",
+  "/images/step-followup-2-3-days.png",
+  "/images/step-followup-3-days-before.png",
+]);
+addStepImages("universal-call-script-framework", [
+  "/images/step-framework-intro.png",
+  "/images/step-framework-value-props.png",
+  "/images/step-framework-discovery.png",
+  "/images/step-framework-wrapup.png",
+  "/images/step-framework-closing.png",
+]);
 
 export const LESSONS: Lesson[] = generated;
 
