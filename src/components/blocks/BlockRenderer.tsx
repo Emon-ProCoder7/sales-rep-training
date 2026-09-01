@@ -89,9 +89,13 @@ function Block({ block }: { block: ContentBlock }) {
     case "image":
       return (
         <Tilt3DCard>
-          <figure className="m-0">
+          <figure className={`m-0 ${block.fit === "contain" ? "bg-near-black" : ""}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={block.src} alt={block.alt} className="aspect-[4/3] w-full object-cover sm:aspect-[16/9]" />
+            <img
+              src={block.src}
+              alt={block.alt}
+              className={`aspect-[4/3] w-full sm:aspect-[16/9] ${block.fit === "contain" ? "object-contain" : "object-cover"}`}
+            />
             {block.caption && (
               <figcaption className="border-t border-border bg-near-black px-4 py-2 text-xs text-mid-gray">
                 {block.caption}

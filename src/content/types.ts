@@ -14,7 +14,7 @@ export type ContentBlock =
   | { type: "paragraph"; spans: Span[] }
   | { type: "list"; ordered: boolean; items: Span[][] }
   | { type: "quote"; blocks: ContentBlock[] }
-  | { type: "image"; src: string; alt: string; caption?: string }
+  | { type: "image"; src: string; alt: string; caption?: string; fit?: "cover" | "contain" }
   | {
       type: "process";
       steps: { title: string; blocks: ContentBlock[]; imageHint?: string | null; image?: string }[];

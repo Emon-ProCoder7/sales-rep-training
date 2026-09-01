@@ -173,6 +173,16 @@ function addStepImages(id: string, images: string[]) {
   });
 }
 
+// Switches one image block to letterboxed contain-fit instead of the default
+// cover-fit crop - used for portrait/person photos that were losing their heads
+// and feet to the wide banner aspect ratio.
+function setImageFit(id: string, src: string, fit: "cover" | "contain") {
+  const l = findLesson(id);
+  const img = l.blocks.find((b) => b.type === "image" && b.src === src);
+  if (!img || img.type !== "image") throw new Error(`No image block with src ${src} in lesson ${id}`);
+  img.fit = fit;
+}
+
 findLesson("lead-hit-funnel").blocks.push({
   type: "note",
   blocks: [
@@ -1007,6 +1017,11 @@ addStepImages("universal-call-script-framework", [
   "/images/step-framework-wrapup.png",
   "/images/step-framework-closing.png",
 ]);
+
+// Two source photos were losing their subject's head/feet to the wide banner
+// crop - switch just these two to contain-fit so the full photo shows.
+setImageFit("welcome-to-beige", "/images/image-cdltatpuh-EN.png", "contain");
+setImageFit("the-beige-platform", "/images/image-ihbwrohbf-EN.png", "contain");
 
 export const LESSONS: Lesson[] = generated;
 
