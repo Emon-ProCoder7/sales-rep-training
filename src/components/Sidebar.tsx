@@ -83,6 +83,26 @@ export default function Sidebar({ mobileOpen, onClose }: { mobileOpen?: boolean;
           </div>
         </div>
 
+        <div className="px-3 pb-4">
+          <Link
+            href="/portfolio"
+            onClick={onClose}
+            className={`flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm font-medium transition ${
+              pathname === "/portfolio"
+                ? "border-warm-beige/40 bg-warm-beige/10 text-warm-beige"
+                : "border-border bg-surface/40 text-slate-muted hover:border-warm-beige/30 hover:text-pure-white"
+            }`}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="shrink-0">
+              <path d="M8 5v14l11-7z" fill="currentColor" />
+            </svg>
+            <span className="min-w-0 flex-1 truncate">Client Portfolio</span>
+            <span className="shrink-0 rounded-full bg-emerald-green/15 px-2 py-0.5 text-[10px] font-medium text-emerald-green">
+              Open
+            </span>
+          </Link>
+        </div>
+
         <nav className="flex-1 space-y-6 px-3 pb-6">
           {MODULES.map((mod) => (
             <div key={mod.id}>

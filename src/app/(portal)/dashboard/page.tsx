@@ -18,6 +18,7 @@ import { useMounted } from "@/lib/useMounted";
 import ProgressRing from "@/components/motion/ProgressRing";
 import SpotlightCard from "@/components/motion/SpotlightCard";
 import MagneticButton from "@/components/motion/MagneticButton";
+import { ALL_PORTFOLIO_VIDEOS } from "@/content/portfolio";
 
 export default function DashboardPage() {
   const mounted = useMounted();
@@ -62,6 +63,41 @@ export default function DashboardPage() {
             {pct === 100 ? "Everything complete." : "Keep going, module by module."}
           </p>
         </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.14 }}
+        className="mt-6"
+      >
+        <SpotlightCard className="rounded-2xl border border-warm-beige/25 bg-warm-beige/[0.05]">
+          <Link href="/portfolio" className="flex flex-wrap items-center justify-between gap-3 p-5">
+            <div className="flex items-center gap-4">
+              <div className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-warm-beige/15 sm:flex">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-warm-beige">
+                  <path d="M8 5v14l11-7z" fill="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-mid-gray">
+                  Client Portfolio
+                  <span className="rounded-full bg-emerald-green/15 px-2 py-0.5 text-[10px] font-medium text-emerald-green">
+                    Always open
+                  </span>
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-pure-white">Browse & share real client work</h3>
+                <p className="mt-1 max-w-md text-sm text-slate-muted">
+                  {ALL_PORTFOLIO_VIDEOS.length} videos across every event type - no quiz, no lock. Come back any
+                  time to pull up samples for a lead.
+                </p>
+              </div>
+            </div>
+            <span className="rounded-full bg-ivory px-4 py-2 text-xs font-semibold text-canvas-black transition group-hover:brightness-95">
+              Browse →
+            </span>
+          </Link>
+        </SpotlightCard>
       </motion.div>
 
       <div className="mt-8 space-y-4">
