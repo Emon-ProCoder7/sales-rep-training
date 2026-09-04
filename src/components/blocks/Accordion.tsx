@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import type { ContentBlock } from "@/content/types";
 import BlockRenderer from "./BlockRenderer";
 
-export default function Accordion({ items }: { items: { title: string; blocks: ContentBlock[] }[] }) {
+export default function Accordion({
+  items,
+}: {
+  items: { title: string; blocks: ContentBlock[]; image?: string }[];
+}) {
   const [open, setOpen] = useState<Set<number>>(new Set([0]));
 
   function toggle(i: number) {
@@ -24,20 +29,40 @@ export default function Accordion({ items }: { items: { title: string; blocks: C
             <button
               type="button"
               onClick={() => toggle(i)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+              className="flex w-full items-center gap-3 px-5 py-4 text-left"
             >
-              <span className="font-medium text-pure-white">{item.title}</span>
-              <span
-                className={`shrink-0 text-warm-beige transition-transform ${expanded ? "rotate-45" : ""}`}
+              {item.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={item.image}
+                  alt=""
+                  className="h-9 w-9 shrink-0 rounded-lg border border-warm-beige/20 bg-canvas-black object-cover"
+                />
+              )}
+              <span className="min-w-0 flex-1 font-medium text-pure-white">{item.title}</span>
+              <motion.span
+                animate={{ rotate: expanded ? 45 : 0 }}
+                transition={{ duration: 0.2 }}
+                className="shrink-0 text-warm-beige"
               >
                 +
-              </span>
+              </motion.span>
             </button>
-            {expanded && (
-              <div className="px-5 pb-5">
-                <BlockRenderer blocks={item.blocks} animate={false} />
-              </div>
-            )}
+            <AnimatePresence initial={false}>
+              {expanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-5 pb-5">
+                    <BlockRenderer blocks={item.blocks} animate={false} />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         );
       })}

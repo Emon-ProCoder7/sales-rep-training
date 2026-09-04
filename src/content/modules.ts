@@ -935,6 +935,201 @@ generated.push({
   ],
 });
 
+// New lesson: Creative Partner Assignment objection handling, provided directly
+// by the CEO (Aug 2026) - covers the freelancer-network assignment model, which
+// the original course never addressed. Suggested-response wording is kept
+// verbatim, since it's approved client-facing language, not paraphrased.
+generated.push({
+  id: "creative-partner-assignment-objections",
+  moduleId: "module-4",
+  title: "Creative Partner Assignment: Objection Handling",
+  order: generated.length,
+  blocks: [
+    { type: "eyebrow", text: "MODULE 4 · OBJECTION HANDLING" },
+    { type: "heading", level: 2, spans: [{ text: "Creative Partner Assignment: Objection Handling", marks: [] }] },
+    { type: "image", src: "/images/hero-creative-partner-assignment.png", alt: "A production coordinator reviewing photographer portfolios to plan a Creative Partner assignment" },
+    {
+      type: "paragraph",
+      spans: [
+        {
+          text: "Beige delivers through a nationwide network of vetted Creative Partners, matched to each project by the Production Team after booking, not a single in-house photographer you pick from a list. That model raises a specific set of objections around who gets assigned, when, and what happens if something changes. These are the CEO-approved responses for exactly that.",
+          marks: [],
+        },
+      ],
+    },
+    {
+      type: "accordion",
+      items: [
+        {
+          title: "\"Do you have a local team in my area?\"",
+          image: "/images/icon-local-network.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "Yes. Beige operates nationwide through a network of vetted Creative Partners across the United States. In most cases, we can assign a qualified local photographer or videographer in your city or surrounding area. Our goal is always to provide local coverage whenever possible while maintaining Beige's quality standards. If you're unsure about your location, let us know your city and state, and we'll gladly confirm availability.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"Why should I book with Beige instead of hiring a local photographer?\"",
+          image: "/images/icon-team-vs-individual.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "That's a great question. While hiring an individual photographer may seem convenient, Beige offers much more than just a person with a camera. When you book with Beige, you're working with an entire production company that manages your project from start to finish. This includes customer support, production coordination, quality assurance, and a network of professionally vetted Creative Partners. You're not relying on one individual, you're backed by a team whose goal is to deliver a smooth and professional experience.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"Who will be my photographer or videographer?\"",
+          image: "/images/icon-photographer-match.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "Your Creative Partner is assigned after your booking has been confirmed. Instead of assigning someone randomly, our Production Team carefully matches your project based on factors such as location, event type, availability, experience, and creative style. This process helps ensure that the person assigned is the best fit for your specific project rather than simply the first available photographer.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"Can I see my photographer's portfolio before booking?\"",
+          image: "/images/icon-portfolio-gallery.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "We understand why you'd want to review previous work before making a decision. Every Creative Partner in our network has already gone through Beige's internal vetting process before becoming eligible for client assignments. Once your booking is confirmed and your Creative Partner has been assigned, we'll provide their portfolio and relevant work whenever applicable. As our platform continues to evolve, customers will also be able to browse Creative Partner profiles directly through the Beige platform.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"Why don't you assign the photographer before I book?\"",
+          image: "/images/icon-assignment-sequence.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "Our assignment process is designed to ensure every client receives the best possible match. Creative Partners manage their own schedules, so we don't reserve someone's availability until a booking is officially confirmed. Once your booking is secured, our Production Team selects the most suitable Creative Partner based on your project's requirements. This allows us to provide better availability, better matching, and a more reliable experience for all clients.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"I found someone cheaper.\"",
+          image: "/images/icon-pricing-scale.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "We understand that pricing is an important consideration. While independent photographers may offer lower rates, it's important to compare the overall value, not just the price. With Beige, you're receiving professional production management, customer support, vetted Creative Partners, quality assurance, and an experienced team that's accountable throughout the entire project. Our goal isn't simply to provide the lowest quote, it's to provide a reliable, professional experience from booking through final delivery.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"Why should I trust Beige?\"",
+          image: "/images/icon-checklist-verify.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "Beige has successfully completed thousands of productions across the United States and continues to grow its nationwide network every day. Our team has built standardized systems and workflows to ensure a consistent experience for every client. From your first conversation with Sales to production planning, shoot execution, and final delivery, multiple teams work together to make sure your project is handled professionally.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"If I'm not comfortable with the assignment, can I request someone else?\"",
+          image: "/images/icon-swap-partner.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "We want every client to feel confident about their Creative Partner. If you have a genuine concern after reviewing your assignment, please let us know as soon as possible. Our Production Team will review your request and, depending on availability and the reason for the request, we'll do our best to accommodate an alternative Creative Partner whenever possible.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"How much notice will I receive about who has been assigned?\"",
+          image: "/images/icon-calendar-scheduling.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "Our Production Team works to assign Creative Partners as early as possible after your booking is confirmed. Once your assignment has been finalized, we'll notify you with your Creative Partner's information before your event, giving you time to review the assignment and prepare for your project.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "\"Does the contract guarantee a replacement if the assigned professional becomes unavailable?\"",
+          image: "/images/icon-security-lock.png",
+          blocks: [
+            {
+              type: "paragraph",
+              spans: [
+                {
+                  text: "If an assigned Creative Partner becomes unavailable due to unforeseen circumstances, our Production Team will make every reasonable effort to assign another qualified Creative Partner for your project. Thanks to our nationwide network of vetted professionals, we're able to respond quickly and minimize disruptions whenever possible.",
+                  marks: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "note",
+      blocks: [
+        {
+          type: "paragraph",
+          spans: [
+            { text: "CEO-provided content: ", marks: ["bold"] },
+            {
+              text: "these ten responses were given directly by leadership and cover the Creative Partner assignment model specifically, use them alongside the pricing/urgency/comparison objections earlier in this module, not instead of them.",
+              marks: [],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+});
+
 // ---------------------------------------------------------------------------
 // Visual pass (Aug 2026): the lesson bodies were pure text - every module read
 // as a wall of paragraphs and process steps with nothing to look at. Adds an
@@ -1104,6 +1299,7 @@ export const MODULES: Module[] = [
     coverImage: "/images/module-4-cover.png",
     items: [
       { kind: "lesson", id: "common-objections-rebuttals" },
+      { kind: "lesson", id: "creative-partner-assignment-objections" },
       { kind: "lesson", id: "discount-strategy-closing" },
       { kind: "lesson", id: "follow-up-urgency-strategy" },
       { kind: "lesson", id: "scenario-tough-corporate-call" },

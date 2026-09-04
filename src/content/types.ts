@@ -21,7 +21,7 @@ export type ContentBlock =
     }
   | { type: "flashcards"; items: { front: string; back: string }[] }
   | { type: "tabs"; tabs: { label: string; blocks: ContentBlock[] }[] }
-  | { type: "accordion"; items: { title: string; blocks: ContentBlock[] }[] }
+  | { type: "accordion"; items: { title: string; blocks: ContentBlock[]; image?: string }[] }
   | { type: "note"; blocks: ContentBlock[] }
   | { type: "objective"; text: string }
   | { type: "scenario-ref"; rootNodeId: string };
